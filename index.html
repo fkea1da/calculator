@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Снимать или покупать — калькулятор</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <a class="logo" href="index.html">
+      <img src="photo/Logo.svg" alt="" width="28" height="28">
+      Снять или купить
+    </a>
+    <nav class="nav" aria-label="Основное меню">
+      <ul class="nav__list">
+        <li><a href="#how">Как считаем</a></li>
+        <li><a href="#">Другие калькуляторы</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Снимать квартиру или взять ипотеку?</h1>
+      <p>Сравним два сценария: купить квартиру в ипотеку или снимать такую же и откладывать деньги на вклад. Покажем, где через выбранный срок у вас окажется больше денег — и почему.</p>
+    </section>
+
+    <section class="calculator" aria-label="Калькулятор">
+      <form class="form" id="calculator" novalidate aria-label="Параметры расчёта">
+
+       
+        <fieldset class="step">
+          <legend class="step__title"><span class="step__num">1</span> Квартира</legend>
+          <div class="step__row">
+            <div class="field">
+              <label class="field__label" for="price">Стоимость квартиры</label>
+              <div class="field__box">
+                <input class="field__input" type="text" inputmode="numeric" id="price" name="price" value="8 000 000" aria-describedby="price-hint">
+                <span class="field__unit" aria-hidden="true">₽</span>
+              </div>
+              <p class="field__hint" id="price-hint">Цена квартиры, которую хотите купить</p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="rent">Аренда такой же квартиры</label>
+              <div class="field__box">
+                <input class="field__input" type="text" inputmode="numeric" id="rent" name="rent" value="45 000" aria-describedby="rent-hint">
+                <span class="field__unit" aria-hidden="true">₽/мес</span>
+              </div>
+              <p class="field__hint" id="rent-hint">Сколько стоит снять похожую</p>
+            </div>
+          </div>
+        </fieldset>
+
+      
+        <fieldset class="step">
+          <legend class="step__title"><span class="step__num">2</span> Ипотека</legend>
+          <div class="step__row">
+            <div class="field">
+              <label class="field__label" for="down-payment">Первоначальный взнос</label>
+              <div class="field__box">
+                <input class="field__input" type="text" inputmode="numeric" id="down-payment" name="downPayment" value="1 600 000" aria-describedby="down-payment-hint">
+                <span class="field__unit" aria-hidden="true">₽</span>
+              </div>
+              <p class="field__hint" id="down-payment-hint">20% от стоимости квартиры</p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="rate">Ставка по ипотеке</label>
+              <div class="field__box">
+                <input class="field__input" type="text" inputmode="decimal" id="rate" name="rate" value="20" aria-describedby="rate-hint">
+                <span class="field__unit" aria-hidden="true">% годовых</span>
+              </div>
+              <p class="field__hint" id="rate-hint">Из предложения вашего банка</p>
+            </div>
+          </div>
+
+          <fieldset class="segmented">
+            <legend class="field__label">Срок ипотеки</legend>
+            <div class="segmented__list">
+              <input class="visually-hidden" type="radio" name="term" id="term-10" value="10">
+              <label class="segmented__item" for="term-10">10 лет</label>
+              <input class="visually-hidden" type="radio" name="term" id="term-15" value="15">
+              <label class="segmented__item" for="term-15">15 лет</label>
+              <input class="visually-hidden" type="radio" name="term" id="term-20" value="20" checked>
+              <label class="segmented__item" for="term-20">20 лет</label>
+              <input class="visually-hidden" type="radio" name="term" id="term-25" value="25">
+              <label class="segmented__item" for="term-25">25 лет</label>
+              <input class="visually-hidden" type="radio" name="term" id="term-30" value="30">
+              <label class="segmented__item" for="term-30">30 лет</label>
+            </div>
+          </fieldset>
+        </fieldset>
+
+      
+        <fieldset class="step">
+          <legend class="step__title"><span class="step__num">3</span> Срок сравнения</legend>
+          <div class="horizon">
+            <div class="horizon__top">
+              <label class="field__label" for="horizon">Через сколько лет сравнить</label>
+              <output class="horizon__value" id="horizon-value" for="horizon">10 лет</output>
+            </div>
+            <input class="horizon__range" type="range" id="horizon" name="horizon" min="1" max="30" step="1" value="10">
+            <div class="horizon__scale" aria-hidden="true">
+              <span>1 год</span>
+              <span>30 лет</span>
+            </div>
+          </div>
+        </fieldset>
+
+       
+        <details class="advanced" id="advanced">
+          <summary class="advanced__summary">
+            <span class="advanced__title">Дополнительные параметры</span>
+            <svg class="advanced__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="m5 7.5 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="advanced__preview" id="advanced-preview">Рост цен на жильё 5% · Рост аренды 7% · Вклад 12% · Содержание 1% в год</span>
+          </summary>
+          <div class="advanced__grid">
+            <div class="field">
+              <label class="field__label" for="price-growth">Рост цен на жильё</label>
+              <div class="field__box">
+                <input class="field__input" type="text" inputmode="decimal" id="price-growth" name="priceGrowth" value="5" aria-describedby="price-growth-hint">
+                <span class="field__unit" aria-hidden="true">% в год</span>
+              </div>
+              <p class="field__hint" id="price-growth-hint">Насколько дорожает квартира</p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="rent-growth">Рост аренды</label>
+              <div class="field__box">
+                <input class="field__input" type="text" inputmode="decimal" id="rent-growth" name="rentGrowth" value="7" aria-describedby="rent-growth-hint">
+                <span class="field__unit" aria-hidden="true">% в год</span>
+              </div>
+              <p class="field__hint" id="rent-growth-hint">Насколько дорожает аренда</p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="deposit">Доходность вклада</label>
+              <div class="field__box">
+                <input class="field__input" type="text" inputmode="decimal" id="deposit" name="deposit" value="12" aria-describedby="deposit-hint">
+                <span class="field__unit" aria-hidden="true">% в год</span>
+              </div>
+              <p class="field__hint" id="deposit-hint">Куда откладываете разницу</p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="upkeep">Содержание квартиры</label>
+              <div class="field__box">
+                <input class="field__input" type="text" inputmode="decimal" id="upkeep" name="upkeep" value="1" aria-describedby="upkeep-hint">
+                <span class="field__unit" aria-hidden="true">% в год</span>
+              </div>
+              <p class="field__hint" id="upkeep-hint">Налог, ремонт, страховка</p>
+            </div>
+          </div>
+          <button class="link-button" type="button" id="reset">Вернуть значения по умолчанию</button>
+        </details>
+
+        <div class="form__actions">
+          <button class="button button--primary" type="submit" id="submit">Рассчитать</button>
+          <small class="form__note">Расчёт приблизительный и не заменяет консультацию с банком. Значения по умолчанию можно менять.</small>
+        </div>
+      </form>
+
+      
+      <section class="result" id="result" data-state="empty" aria-label="Результат расчёта">
+        <p class="visually-hidden" id="status" role="status"></p>
+
+        
+        <div class="result__empty">
+          <div class="illustration" aria-hidden="true">
+            <div class="illustration__bar illustration__bar--rent">
+              <span class="illustration__q">?</span>
+              <span class="illustration__col"></span>
+              Снимать
+            </div>
+            <div class="illustration__bar illustration__bar--buy">
+              <span class="illustration__q">?</span>
+              <span class="illustration__col"></span>
+              Покупать
+            </div>
+          </div>
+          <div class="result__copy">
+            <h2 class="result__title">Здесь появится ответ</h2>
+            <p class="result__text">Заполните параметры слева и нажмите «Рассчитать». Мы посчитаем оба сценария на один и тот же срок и сравним, сколько денег у вас будет в итоге.</p>
+          </div>
+          <hr class="result__divider">
+          <div>
+            <h3 class="result__subtitle">Вы узнаете</h3>
+            <ul class="checklist">
+              <li>Что выгоднее и на сколько рублей</li>
+              <li>Ежемесячный платёж и переплату по ипотеке</li>
+              <li>При какой ставке покупка станет выгоднее аренды</li>
+            </ul>
+          </div>
+        </div>
+
+        
+        <div class="result__error">
+          <span class="result__icon" aria-hidden="true">!</span>
+          <div class="result__copy">
+            <h2 class="result__title">Не получается посчитать</h2>
+            <p class="result__text" id="error-text">Исправьте поля, отмеченные красным, — и сразу покажем результат.</p>
+          </div>
+          <ul class="error-list" id="error-list"></ul>
+          <small class="result__hint">Нажмите на ошибку, чтобы перейти к полю.</small>
+        </div>
+
+        
+        <div class="result__success">
+          <div class="verdict">
+            <p class="tag" id="res-tag">Ответ через 10 лет</p>
+            <h2 class="verdict__title" id="res-title">Выгоднее снимать</h2>
+            <p class="verdict__text" id="res-text"></p>
+          </div>
+
+          <div class="compare">
+            <article class="tile tile--rent" id="tile-rent">
+              <h3 class="tile__label">Снимать</h3>
+              <p class="tile__value" id="res-rent"></p>
+              <p class="tile__caption">накоплено на вкладе</p>
+            </article>
+            <article class="tile tile--buy" id="tile-buy">
+              <h3 class="tile__label">Покупать</h3>
+              <p class="tile__value" id="res-buy"></p>
+              <p class="tile__caption" id="res-buy-caption"></p>
+            </article>
+          </div>
+
+          <figure class="chart">
+            <figcaption class="chart__header">
+              Капитал по годам
+              <span class="legend" aria-hidden="true">
+                <span class="legend__item legend__item--rent">Снимать</span>
+                <span class="legend__item legend__item--buy">Покупать</span>
+              </span>
+            </figcaption>
+            <svg class="chart__svg" id="chart" viewBox="0 0 400 212" role="img" aria-label="График капитала по годам"></svg>
+          </figure>
+
+          <div>
+            <h3 class="breakdown__title">Из чего складывается</h3>
+            <dl class="breakdown">
+              <div class="breakdown__row"><dt>Платёж по ипотеке</dt><dd id="bd-payment"></dd></div>
+              <div class="breakdown__row"><dt>Аренда в первый год</dt><dd id="bd-rent"></dd></div>
+              <div class="breakdown__row"><dt id="bd-interest-label">Проценты банку</dt><dd id="bd-interest"></dd></div>
+              <div class="breakdown__row"><dt id="bd-rent-paid-label">Потрачено на аренду</dt><dd id="bd-rent-paid"></dd></div>
+              <div class="breakdown__row"><dt>Квартира будет стоить</dt><dd id="bd-value"></dd></div>
+              <div class="breakdown__row"><dt>Останется долга по ипотеке</dt><dd id="bd-balance"></dd></div>
+            </dl>
+          </div>
+
+          <aside class="insight">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.4 1 1.1 1 1.8V16h5v-.3c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div>
+              <p class="insight__title" id="insight-title"></p>
+              <p class="insight__text" id="insight-text"></p>
+            </div>
+          </aside>
+
+          <div class="result__actions">
+            <button class="button button--secondary" type="button" id="print">Скачать PDF</button>
+            <button class="button button--secondary" type="button" id="share">Поделиться</button>
+          </div>
+          <small class="result__hint">Расчёт приблизительный: не учитывает налоговый вычет, страховку по ипотеке и инфляцию.</small>
+        </div>
+      </section>
+    </section>
+
+    <section class="how" id="how">
+      <h2>Как мы считаем</h2>
+      <ul class="how__list">
+        <li class="how__card how__card--rent">
+          <h3 class="how__title">Сценарий «Снимать»</h3>
+          <p class="how__text">Каждый месяц вы платите аренду. Первоначальный взнос и разницу между ипотечным платежом и арендой кладёте на вклад под проценты.</p>
+        </li>
+        <li class="how__card how__card--buy">
+          <h3 class="how__title">Сценарий «Покупать»</h3>
+          <p class="how__text">Вы вносите первый взнос и платите ипотеку и содержание квартиры. Квартира дорожает, долг уменьшается.</p>
+        </li>
+        <li class="how__card how__card--total">
+          <h3 class="how__title">Что сравниваем</h3>
+          <p class="how__text">Капитал в конце срока: накопления на вкладе против стоимости квартиры за вычетом остатка долга. У кого больше — тот сценарий и выгоднее.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
