@@ -1,4 +1,3 @@
-
 :root {
   --bg-page: #F4F2EC;
   --bg-surface: #FFFFFF;
@@ -30,7 +29,6 @@
 
   --content-width: 1200px;
 }
-
 
 *,
 *::before,
@@ -75,7 +73,6 @@ svg {
   border: 0;
 }
 
-
 .header,
 .hero,
 .calculator,
@@ -83,7 +80,6 @@ svg {
   width: min(100% - 32px, var(--content-width));
   margin-inline: auto;
 }
-
 
 .header {
   display: flex;
@@ -138,7 +134,6 @@ svg {
   color: var(--text-secondary);
 }
 
-
 .calculator {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 464px;
@@ -164,14 +159,12 @@ svg {
   top: 24px;
 }
 
-
 .step {
   min-width: 0;
   margin: 0;
   padding: 0;
   border: 0;
 }
-
 
 .step > * + * {
   margin-top: 20px;
@@ -206,7 +199,6 @@ svg {
   gap: 16px;
 }
 
-
 .field {
   display: flex;
   flex-direction: column;
@@ -238,7 +230,6 @@ svg {
   border-color: var(--border-hover);
 }
 
-
 .field__box:focus-within {
   border-color: var(--border-focus);
   box-shadow: inset 0 0 0 1px var(--border-focus);
@@ -264,7 +255,6 @@ svg {
   line-height: 18px;
   color: var(--text-secondary);
 }
-
 
 .field--error .field__box,
 .field--error .field__box:focus-within {
@@ -325,7 +315,6 @@ input:focus-visible + .segmented__item {
   outline-offset: 2px;
 }
 
-
 .horizon {
   display: flex;
   flex-direction: column;
@@ -343,7 +332,7 @@ input:focus-visible + .segmented__item {
 }
 
 .horizon__range {
-  --fill: 31%; /* JS обновляет при движении */
+  --fill: 31%;
   width: 100%;
   height: 24px;
   margin: 0;
@@ -357,7 +346,6 @@ input:focus-visible + .segmented__item {
   outline: none;
 }
 
-/* Chrome, Safari, Edge */
 .horizon__range::-webkit-slider-runnable-track {
   height: 6px;
   border-radius: 3px;
@@ -380,7 +368,6 @@ input:focus-visible + .segmented__item {
   box-shadow: 0 0 0 4px rgba(23, 23, 26, 0.15);
 }
 
-/* Firefox */
 .horizon__range::-moz-range-track {
   height: 6px;
   border-radius: 3px;
@@ -413,7 +400,6 @@ input:focus-visible + .segmented__item {
   line-height: 18px;
   color: var(--text-tertiary);
 }
-
 
 .advanced {
   padding: 16px 20px;
@@ -542,7 +528,6 @@ input:focus-visible + .segmented__item {
   color: var(--text-tertiary);
 }
 
-
 .result__empty,
 .result__error,
 .result__success {
@@ -588,7 +573,6 @@ input:focus-visible + .segmented__item {
   border: 0;
   border-top: 1px solid var(--border);
 }
-
 
 .illustration {
   display: flex;
@@ -670,7 +654,6 @@ input:focus-visible + .segmented__item {
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='10' fill='%23EEEBE3'/%3E%3Cpath d='m6 10.2 2.7 2.6L14 7.5' fill='none' stroke='%2317171A' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
-
 .result__icon {
   display: grid;
   place-items: center;
@@ -732,7 +715,6 @@ input:focus-visible + .segmented__item {
   line-height: 18px;
   color: var(--text-secondary);
 }
-
 
 .verdict {
   display: flex;
@@ -828,7 +810,6 @@ input:focus-visible + .segmented__item {
   color: var(--text-secondary);
 }
 
-
 .chart {
   display: flex;
   flex-direction: column;
@@ -909,7 +890,6 @@ input:focus-visible + .segmented__item {
 .chart__dot--rent { fill: var(--rent); }
 .chart__dot--buy { fill: var(--buy); }
 
-
 .breakdown__title {
   margin-bottom: 4px;
   font-size: 14px;
@@ -934,7 +914,6 @@ input:focus-visible + .segmented__item {
   text-align: right;
   white-space: nowrap;
 }
-
 
 .insight {
   display: flex;
@@ -964,7 +943,6 @@ input:focus-visible + .segmented__item {
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
-
 
 .how {
   padding-block: 80px 96px;
@@ -1017,7 +995,6 @@ input:focus-visible + .segmented__item {
   color: var(--text-secondary);
 }
 
-
 @media (max-width: 1024px) {
   .calculator {
     grid-template-columns: 1fr;
@@ -1035,10 +1012,6 @@ input:focus-visible + .segmented__item {
 
   .nav__list {
     gap: 16px;
-  }
-
-  .nav__list li:last-child {
-    display: none;
   }
 
   .hero {
@@ -1103,7 +1076,6 @@ input:focus-visible + .segmented__item {
     padding: 16mm;
     background: #fff;
   }
-
 
   .header,
   .hero,
