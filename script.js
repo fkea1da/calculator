@@ -22,9 +22,9 @@ const RULES = {
   priceGrowth: (v) => (v >= -20 && v <= 30 ? '' : 'Укажите значение от −20 до 30%'),
   rentGrowth: (v) => (v >= -20 && v <= 30 ? '' : 'Укажите значение от −20 до 30%'),
   deposit: (v) => (v >= 0 && v <= 50 ? '' : 'Укажите доходность от 0 до 50%'),
-  upkeep: (v) => (v >= 0 && v <= 10 ? '' : 'Укажите значение от 0 до 10%'),
 };
 
+const OPTIONAL_FIELDS = ['priceGrowth', 'rentGrowth', 'deposit'];
 const MONEY_FIELDS = ['price', 'rent', 'downPayment'];
 
 const NBSP = ' ';
@@ -64,7 +64,8 @@ function readForm() {
   const data = new FormData(form);
   const values = {};
   for (const name of Object.keys(RULES)) {
-    values[name] = parseNumber(data.get(name));
+    const raw = data.get(name).trim();
+    values[name] = OPTIONAL_FIELDS.includes(name) && raw === '' ? 0 : parseNumber(raw);
   }
   values.term = Number(data.get('term'));
   values.horizon = Number(data.get('horizon'));
@@ -137,12 +138,11 @@ function simulate(v, ratePercent) {
       balance -= mortgagePayment - interest;
       interestPaid += interest;
     }
-    const upkeep = (flatValue * v.upkeep) / 100 / 12;
 
     rentSavings *= 1 + depositMonthly;
     buySavings *= 1 + depositMonthly;
 
-    const difference = mortgagePayment + upkeep - rent;
+    const difference = mortgagePayment - rent;
     if (difference > 0) rentSavings += difference;
     else buySavings -= difference;
 
@@ -366,10 +366,12 @@ function updateDownPaymentHint() {
 }
 
 function updateAdvancedPreview() {
-  const value = (name) => form.elements[name].value.trim() || '—';
-  advancedPreview.textContent =
-    `Рост цен на жильё ${value('priceGrowth')}% · Рост аренды ${value('rentGrowth')}% · ` +
-    `Вклад ${value('deposit')}% · Содержание ${value('upkeep')}% в год`;
+  const labels = ['Рост цен на жильё', 'Рост аренды', 'Вклад'];
+  const parts = OPTIONAL_FIELDS.map((name, index) => {
+    const value = form.elements[name].value.trim();
+    return value === '' ? '' : `${labels[index]} ${value}%`;
+  });
+  advancedPreview.textContent = parts.filter(Boolean).join(' · ') || 'Можно оставить пустыми';
 }
 
 function flashButton(button, text) {
@@ -380,7 +382,10 @@ function flashButton(button, text) {
 
 function saveToUrl(values) {
   const params = new URLSearchParams();
-  for (const [name, value] of Object.entries(values)) params.set(name, value);
+  for (const [name, value] of Object.entries(values)) {
+    if (OPTIONAL_FIELDS.includes(name) && form.elements[name].value.trim() === '') continue;
+    params.set(name, value);
+  }
   history.replaceState(null, '', '?' + params.toString());
 }
 
@@ -463,8 +468,10 @@ $('reset').addEventListener('click', () => {
 });
 
 form.addEventListener('click', (event) => {
-  const box = event.target.closest('.field__box');
-  if (box && event.target === box) box.querySelector('input').focus();
+  const input = event.target.closest('.field__box')?.querySelector('.field__input');
+  if (!input) return;
+  input.focus();
+  input.select();
 });
 
 $('print').addEventListener('click', () => window.print());

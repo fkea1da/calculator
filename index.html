@@ -37,7 +37,7 @@
             <div class="field">
               <label class="field__label" for="price">Стоимость квартиры</label>
               <div class="field__box">
-                <input class="field__input" type="text" inputmode="numeric" id="price" name="price" value="8 000 000" aria-describedby="price-hint">
+                <input class="field__input" type="text" inputmode="numeric" id="price" name="price" aria-describedby="price-hint">
                 <span class="field__unit" aria-hidden="true">₽</span>
               </div>
               <p class="field__hint" id="price-hint">Цена квартиры, которую хотите купить</p>
@@ -45,7 +45,7 @@
             <div class="field">
               <label class="field__label" for="rent">Аренда такой же квартиры</label>
               <div class="field__box">
-                <input class="field__input" type="text" inputmode="numeric" id="rent" name="rent" value="45 000" aria-describedby="rent-hint">
+                <input class="field__input" type="text" inputmode="numeric" id="rent" name="rent" aria-describedby="rent-hint">
                 <span class="field__unit" aria-hidden="true">₽/мес</span>
               </div>
               <p class="field__hint" id="rent-hint">Сколько стоит снять похожую</p>
@@ -59,7 +59,7 @@
             <div class="field">
               <label class="field__label" for="down-payment">Первоначальный взнос</label>
               <div class="field__box">
-                <input class="field__input" type="text" inputmode="numeric" id="down-payment" name="downPayment" value="1 600 000" aria-describedby="down-payment-hint">
+                <input class="field__input" type="text" inputmode="numeric" id="down-payment" name="downPayment" aria-describedby="down-payment-hint">
                 <span class="field__unit" aria-hidden="true">₽</span>
               </div>
               <p class="field__hint" id="down-payment-hint">20% от стоимости квартиры</p>
@@ -67,7 +67,7 @@
             <div class="field">
               <label class="field__label" for="rate">Ставка по ипотеке</label>
               <div class="field__box">
-                <input class="field__input" type="text" inputmode="decimal" id="rate" name="rate" value="20" aria-describedby="rate-hint">
+                <input class="field__input" type="text" inputmode="decimal" id="rate" name="rate" aria-describedby="rate-hint">
                 <span class="field__unit" aria-hidden="true">% годовых</span>
               </div>
               <p class="field__hint" id="rate-hint">Из предложения вашего банка</p>
@@ -112,13 +112,13 @@
             <svg class="advanced__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
               <path d="m5 7.5 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span class="advanced__preview" id="advanced-preview">Рост цен на жильё 5% · Рост аренды 7% · Вклад 12% · Содержание 1% в год</span>
+            <span class="advanced__preview" id="advanced-preview">Можно оставить пустыми</span>
           </summary>
           <div class="advanced__grid">
             <div class="field">
               <label class="field__label" for="price-growth">Рост цен на жильё</label>
               <div class="field__box">
-                <input class="field__input" type="text" inputmode="decimal" id="price-growth" name="priceGrowth" value="5" aria-describedby="price-growth-hint">
+                <input class="field__input" type="text" inputmode="decimal" id="price-growth" name="priceGrowth" aria-describedby="price-growth-hint">
                 <span class="field__unit" aria-hidden="true">% в год</span>
               </div>
               <p class="field__hint" id="price-growth-hint">Насколько дорожает квартира</p>
@@ -126,7 +126,7 @@
             <div class="field">
               <label class="field__label" for="rent-growth">Рост аренды</label>
               <div class="field__box">
-                <input class="field__input" type="text" inputmode="decimal" id="rent-growth" name="rentGrowth" value="7" aria-describedby="rent-growth-hint">
+                <input class="field__input" type="text" inputmode="decimal" id="rent-growth" name="rentGrowth" aria-describedby="rent-growth-hint">
                 <span class="field__unit" aria-hidden="true">% в год</span>
               </div>
               <p class="field__hint" id="rent-growth-hint">Насколько дорожает аренда</p>
@@ -134,26 +134,18 @@
             <div class="field">
               <label class="field__label" for="deposit">Доходность вклада</label>
               <div class="field__box">
-                <input class="field__input" type="text" inputmode="decimal" id="deposit" name="deposit" value="12" aria-describedby="deposit-hint">
+                <input class="field__input" type="text" inputmode="decimal" id="deposit" name="deposit" aria-describedby="deposit-hint">
                 <span class="field__unit" aria-hidden="true">% в год</span>
               </div>
               <p class="field__hint" id="deposit-hint">Куда откладываете разницу</p>
             </div>
-            <div class="field">
-              <label class="field__label" for="upkeep">Содержание квартиры</label>
-              <div class="field__box">
-                <input class="field__input" type="text" inputmode="decimal" id="upkeep" name="upkeep" value="1" aria-describedby="upkeep-hint">
-                <span class="field__unit" aria-hidden="true">% в год</span>
-              </div>
-              <p class="field__hint" id="upkeep-hint">Налог, ремонт, страховка</p>
-            </div>
           </div>
-          <button class="link-button" type="button" id="reset">Вернуть значения по умолчанию</button>
+          <button class="link-button" type="button" id="reset">Очистить параметры</button>
         </details>
 
         <div class="form__actions">
           <button class="button button--primary" type="submit" id="submit">Рассчитать</button>
-          <small class="form__note">Расчёт приблизительный и не заменяет консультацию с банком. Значения по умолчанию можно менять.</small>
+          <small class="form__note">Расчёт приблизительный и не заменяет консультацию с банком.</small>
         </div>
       </form>
 
@@ -255,7 +247,7 @@
             <button class="button button--secondary" type="button" id="print">Скачать PDF</button>
             <button class="button button--secondary" type="button" id="share">Поделиться</button>
           </div>
-          <small class="result__hint">Расчёт приблизительный: не учитывает налоговый вычет, страховку по ипотеке и инфляцию.</small>
+          <small class="result__hint">Расчёт приблизительный: не учитывает налоговый вычет, расходы на содержание квартиры и инфляцию.</small>
         </div>
       </section>
     </section>
@@ -269,7 +261,7 @@
         </li>
         <li class="how__card how__card--buy">
           <h3 class="how__title">Сценарий «Покупать»</h3>
-          <p class="how__text">Вы вносите первый взнос и платите ипотеку и содержание квартиры. Квартира дорожает, долг уменьшается.</p>
+          <p class="how__text">Вы вносите первый взнос и платите ипотеку. Стоимость квартиры меняется с учётом указанного роста цен, а долг уменьшается.</p>
         </li>
         <li class="how__card how__card--total">
           <h3 class="how__title">Что сравниваем</h3>
